@@ -9,7 +9,8 @@ import UIKit
 
 class Cell: UITableViewCell {
     
-    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var conferenceLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
 
     override func awakeFromNib() {

@@ -10,4 +10,5 @@ import UIKit
 
 struct K{
     static let appName = "NBA"
+    static let cellIdentifier = "ReusableCell"
 }
