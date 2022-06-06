@@ -7,7 +7,40 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating {
+class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UISearchResultsUpdating, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController()
+    var filteredTeams = [TeamsInfo]()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        navigationItem.title = K.appName
+        tableView.dataSource =  self
+        tableView.delegate = self
+        initSearchContoller()
+        TeamsInfo.all.sort(by: {$0.name < $1.name})
+    }
+    
+    
+    func initSearchContoller(){
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        definesPresentationContext = true
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.searchBar.scopeButtonTitles = ["All", "Eastern", "Western"]
+        searchController.searchBar.delegate = self
+        
+    }
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar  = searchController.searchBar
@@ -16,6 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         filterForSeachTextAndScopeButton(searchText: searchText, selectedScopeButton: selectedScopeButton)
     }
+    
     
     func filterForSeachTextAndScopeButton(searchText: String, selectedScopeButton: String = "All"){
         filteredTeams = TeamsInfo.all.filter
@@ -37,19 +71,14 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    let searchController = UISearchController()
-    var filteredTeams = [TeamsInfo]()
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(searchController.isActive)
         {
             return filteredTeams.count
-            
         }
         return TeamsInfo.all.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let teamsInfo: TeamsInfo!
@@ -67,31 +96,6 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         cell.iconImage.image = teamsInfo.logo
         
         return cell
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        navigationItem.title = K.appName
-        tableView.dataSource =  self
-        initSearchContoller()
-        TeamsInfo.all.sort(by: {$0.name < $1.name})
-        
-    }
-    
-    func initSearchContoller(){
-        searchController.loadViewIfNeeded()
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
-        definesPresentationContext = true
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
-        searchController.searchBar.scopeButtonTitles = ["All", "Eastern", "Western"]
-        searchController.searchBar.delegate = self
-        
     }
 
 
