@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.enablesReturnKeyAutomatically = false
         searchController.searchBar.returnKeyType = UIReturnKeyType.done
+       
         definesPresentationContext = true
         
         navigationItem.searchController = searchController
@@ -97,6 +98,22 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let teamsSite: TeamsInfo!
+        
+        if(searchController.isActive)
+        {
+            teamsSite = filteredTeams[indexPath.row]
+        }else{
+            teamsSite = TeamsInfo.all[indexPath.row]
+        }
+        
+        
+        let url = URL(string: teamsSite.site)!
+        UIApplication.shared.open(url)
+        print(teamsSite.site)
+        }
 
 
 }
