@@ -64,16 +64,40 @@
 			children = (
 				343BF543284BCD1300AF7F4C /* AppDelegate.swift */,
 				343BF545284BCD1300AF7F4C /* SceneDelegate.swift */,
-				343BF547284BCD1300AF7F4C /* ViewController.swift */,
-				343BF559284BD30400AF7F4C /* TeamsInfo.swift */,
-				343BF549284BCD1300AF7F4C /* Main.storyboard */,
+				3480D537284E046D004D5E0D /* Constants.swift */,
+				3480D53B284FF6C8004D5E0D /* Controllers */,
+				3480D53D284FF710004D5E0D /* Models */,
+				3480D53C284FF6FC004D5E0D /* Views */,
 				343BF54C284BCD1400AF7F4C /* Assets.xcassets */,
 				343BF54E284BCD1400AF7F4C /* LaunchScreen.storyboard */,
 				343BF551284BCD1400AF7F4C /* Info.plist */,
-				3480D537284E046D004D5E0D /* Constants.swift */,
-				3480D539284E0A5D004D5E0D /* Cell.swift */,
 			);
 			path = NBA;
+			sourceTree = "<group>";
+		};
+		3480D53B284FF6C8004D5E0D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				343BF547284BCD1300AF7F4C /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3480D53C284FF6FC004D5E0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				343BF549284BCD1300AF7F4C /* Main.storyboard */,
+				3480D539284E0A5D004D5E0D /* Cell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3480D53D284FF710004D5E0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				343BF559284BD30400AF7F4C /* TeamsInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
