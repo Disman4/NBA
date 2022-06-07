@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         navigationItem.hidesSearchBarWhenScrolling = true
         searchController.searchBar.scopeButtonTitles = ["All", "Eastern", "Western"]
         searchController.searchBar.delegate = self
-        
+    
     }
     
     
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
                     let scopeMatch = (selectedScopeButton == "All" || team.conference.lowercased().contains(selectedScopeButton.lowercased()))
                     if(searchController.searchBar.text != "")
                     {
-                        let searchTextMatch = team.conference.lowercased().contains(searchText.lowercased())
+                        let searchTextMatch = team.name.lowercased().contains(searchText.lowercased())
                         
                         return scopeMatch && searchTextMatch
                     }
