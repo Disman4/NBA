@@ -1,4 +1,4 @@
-# NBA
+# NBA Teams
 Nba Teams 
 
 iOS app with Nba teams. Teams are sorted in alphebetical order in a tableView. Teams can also be grouped into their respective conferences. When a team is selected, the user will be redirected to the team's website.
